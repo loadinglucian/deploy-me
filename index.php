@@ -30,6 +30,7 @@ function viteAssets(): string
         return <<<HTML
         <script type="module" src="{$devServerUrl}/@vite/client"></script>
         <link rel="stylesheet" href="{$devServerUrl}/src/main.css">
+        <script type="module" src="{$devServerUrl}/src/fireworks.js"></script>
         HTML;
     }
 
@@ -37,9 +38,17 @@ function viteAssets(): string
     if (file_exists($manifestPath)) {
         $manifest = json_decode(file_get_contents($manifestPath), true);
         $cssFile = $manifest['src/main.css']['file'] ?? null;
-        if ($cssFile) {
-            return '<link rel="stylesheet" href="/dist/' . $cssFile . '">';
+        $jsFile = $manifest['src/fireworks.js']['file'] ?? null;
+
+        $html = '';
+        if (null !== $cssFile) {
+            $html .= '<link rel="stylesheet" href="/dist/' . $cssFile . '">';
         }
+        if (null !== $jsFile) {
+            $html .= '<script type="module" src="/dist/' . $jsFile . '"></script>';
+        }
+
+        return $html;
     }
 
     return '';

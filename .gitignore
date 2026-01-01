@@ -1,0 +1,7 @@
+dist/
+node_modules/
+vendor/
+!.env.example
+.DS_Store
+.env*
+Thumbs.db

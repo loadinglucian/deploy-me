@@ -41,3 +41,7 @@ APP_MESSAGE="Yay, confetti! 🎉"
 ```
 
 This message displays on the page.
+
+## License
+
+MIT

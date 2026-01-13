@@ -44,4 +44,4 @@ This message displays on the page.
 
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) for details.
